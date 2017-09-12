@@ -1,0 +1,45 @@
+<section class="contact section" id="contact" tabindex="-1">
+  <div class="container">
+    <div class="grid">
+      <div class="col-8@desktop">
+        <h2>Contact</h2>
+        <p> Have a question? Want to hire me?
+          <br> Go ahead,
+          <span title="Unless you want me to ( ͡° ͜ʖ ͡°)">I don't bite.</span>
+          <br> Use the form below or mail me directly at
+          <a href="mailto:ppozniak95@gmail.com">ppozniak95@gmail.com</a>
+        </p>
+        <form class="js-validate" action="https://formspree.io/ppozniak95@gmail.com" method="POST">
+          <fieldset>
+            <legend class="sr-only">Form contents</legend>
+            <div class="form__field">
+              <label class="form__label" for="email">Email</label>
+              <input class="form__input" required placeholder="awesome@company.com" type="email" name="_replyto" id="email" /> </div>
+            <div class="form__field">
+              <label class="form__label" for="subject">Subject</label>
+              <input class="form__input" required placeholder="Job offer" type="text" name="_subject" id="subject" /> </div>
+            <div class="form__field">
+              <label class="form__label" for="message">Message</label>
+              <textarea id="message" class="form__input form__textarea" required placeholder="Hey man, we need you in our team please join us we have free ping-pong table and stuff and we give money for work so yeah please" name="message"></textarea>
+            </div>
+            <input class="btn pull-right" type="submit" value="Submit" /> </fieldset>
+        </form>
+      </div>
+      <!-- Social links -->
+      <div class="col-4@desktop socials">
+        <h2>Social links</h2>
+        <ul class="socials__list">
+          {{#each socialLinks}}
+            <li class="socials__item">
+              <a class="socials__link link--{{className}}" href="{{link}}" target="_blank" rel="noopener">
+                <i aria-hidden="true" class="socials__icon icon {{icon}}"></i>
+                <span class="socials__title">
+                  <span class="sr-only">Go to my</span>{{name}}<span class="sr-only"> profile</span></span>
+              </a>
+            </li>
+            {{~/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="Patryk Poźniak">
+    <meta name="keywords" content="Patryk Poźniak, frontend, developer, javascript, react, vue">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, nofollow">
+    <meta name="theme-color" content="#0096ff">
+
+    <title>Patryk Poźniak - Front-End Developer</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu:400,500" rel="stylesheet">
+
+    <!-- build:css styles/normalize.css -->
+    <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js" async></script>
+    <!-- endbuild -->
+    <link rel="icon" href="favicon.png">
+  </head>
+
+  <body>
+    <!-- Landing section -->
+    {{> landing }}
+
+    <!-- Mainnav -->
+    {{> nav }}
+
+    <!-- Skills section -->
+    {{> skills }}
+
+    <!-- Portfolio section -->
+    {{> portfolio }}
+
+    <!-- Contact section -->
+    {{> contact }}
+
+    <!-- Footer -->
+    {{> footer }}
+
+    <!-- Scroll top button -->
+    <a id="scroll-top" class="btn--circle btn--blue scroll-top" href="#about">
+      <i class="icon icon-arrow-long-up" aria-hidden="true"></i>
+      <span class="sr-only">Scroll to the top</span>
+    </a>
+    <script src="scripts/bundle.js"></script>
+  </body>
+
+</html>

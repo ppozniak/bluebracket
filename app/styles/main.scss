@@ -1,0 +1,105 @@
+@import "globals/_variables.scss";
+@import "globals/_mixins.scss";
+@import "./icons/style.scss";
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: calc(0.6vh + 0.85em);
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu", Verdana, Tahoma, sans-serif;
+  line-height: $line-height;
+  color: $gray--l;
+  background-color: $pastel--d;
+  padding: 0;
+  margin: 0;
+}
+
+// Basic typography
+h1, h2, h3, h4, h5, p{
+  margin: 0;
+}
+
+h1{
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+h4, h5 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0;
+}
+
+p + p {
+  margin-top: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: $blue;
+  transition: color .25s;
+
+  &:hover {
+    color: $blue--d;
+  }
+}
+
+// Globals
+@import "globals/_helpers.scss";
+@import "globals/_atoms.scss";
+// Sections
+@import "_1landing.scss";
+@import "_2main-nav.scss";
+@import "_3skills.scss";
+@import "_4portfolio.scss";
+@import "_5contact.scss";
+@import "_7modal.scss";
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  padding: 2.3rem 2.5rem;
+  text-align: center;
+  font-size: .8rem;
+  font-weight: 100;
+  background-color: $almostblack;
+
+  p {
+    margin: 0;
+  }
+}
+
+.footer__content {
+  @include from-portrait() {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+
+.bracket:before {
+  position: absolute;
+  left: 5%;
+  bottom: 50%;
+  transform: translateY(50%);
+  content: "}";
+  color: $blue;
+  font-size: 4.5rem;
+}

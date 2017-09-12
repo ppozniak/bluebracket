@@ -1,0 +1,12 @@
+<nav class="main-nav" id="main-nav" role="navigation">
+  <ul class="nav__ul">
+    {{#each nav}}
+      <li class="nav__li">
+        <a class="nav__a" href="#{{section}}" title="Scroll to {{section}} section">
+          <i class="icon {{icon}} hide@mobile" aria-hidden="true"></i>
+          <span>{{capitalize section}}</span>
+        </a>
+      </li>
+    {{~/each}}
+  </ul>
+</nav>

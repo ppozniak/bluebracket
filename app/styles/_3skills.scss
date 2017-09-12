@@ -1,0 +1,49 @@
+.skills {
+  color: $pastel--d;
+  background: #fff url(../images/gears.svg) no-repeat right bottom/70%;
+  @include from-portrait() {
+    background-size: 25%;
+  }
+}
+
+.skills-group {
+  @extend %list-reset;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  @include from-portrait() {
+    justify-content: flex-start;
+  }
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 0 0 30%;
+  margin: 1rem 0;
+  cursor: default;
+  @include from-portrait() {
+    flex-basis: 25%;
+  }
+  @include from-landscape() {
+    flex-basis: 15%;
+  }
+}
+
+.skill__icon {
+  margin-bottom: 0.35rem;
+  font-size: 3.2rem;
+}
+
+.skill__name {
+  display: flex;
+  align-items: center;
+  font-size: .8rem;
+  white-space: nowrap;
+  text-align: center;
+  color: $pastel--d;
+  flex: 0 0 auto;
+}

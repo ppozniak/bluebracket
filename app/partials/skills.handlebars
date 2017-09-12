@@ -1,0 +1,20 @@
+<section class="skills section" id="skills">
+  <div class="container">
+    <header class="section__header">
+      <h2 class="section__heading">What do I know?</h2>
+      <div class="text--small">Or think I know:</div>
+    </header>
+
+    {{#each skillGroups}}
+      <h3 class="underlined">{{name}}</h3>
+      <ul class="skills-group">
+        {{#each skills}}
+        <li class="skill" {{~#if title}}title="{{title}}"{{~/if}}>
+            <i class="icon {{icon}} skill__icon" aria-hidden="true"></i><span class="skill__name">{{{name}}}</span>
+        </li>
+        {{~/each}}
+      </ul>
+    {{~/each}}
+
+  </div>
+</section>

@@ -1,0 +1,135 @@
+.scroll-top {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 10;
+  transform: translateY(150%);
+  box-shadow: 0 0 12px rgba($softshadow, .3);
+}
+
+.scroll-past-nav .scroll-top {
+  transform: translateY(0);
+  &:hover {
+    transform: translateY(-6px);
+  }
+}
+
+.section {
+  padding: 3.3rem 0;
+  &:focus {
+    outline: none;
+  }
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: 2.6rem;
+}
+
+// Button
+.btn {
+  display: block;
+  padding: .5rem 1.2rem;
+  color: $blue--l;
+  border: 3px solid $gray;
+  transition: all .45s;
+  text-align: center;
+  cursor: pointer;
+  background-color: $pastel;
+
+  &:hover,
+  &:focus {
+    background-color: $pastel--d;
+    border-radius: 4px;
+    border-color: $pastel;
+    transform: scale(.98);
+  }
+}
+
+.btn--circle {
+  display: inline-block;
+  border-radius: 50%;
+  width: 3rem;
+  text-align: center;
+  line-height: 3rem;
+  transition: color .45s, background-color .45s, transform .25s ease-out;
+}
+
+.btn--blue {
+  background-color: $blue;
+  color: #fff;
+  &:hover {
+    background-color: $blue--d;
+    color: #fff;
+  }
+}
+
+.btn--green {
+  background-color: $green;
+  color: $gray--l;
+  &:hover {
+    background-color: $green--d;
+    color: $gray--d;
+  }
+}
+
+
+// BlockQuote
+.quote {
+  font-size: 1.3rem;
+  letter-spacing: 0.125rem;
+  margin: .4rem;
+  color: $gold;
+  text-align: center;
+
+
+  p {
+    &:before,
+    &:after {
+      content: '"';
+    }
+  }
+}
+
+.quote__author {
+  float: right;
+  font-style: italic;
+  font-size: .9rem;
+
+  &:before {
+    content: "- ";
+  }
+
+}
+
+.table {
+  width: 100%;
+  margin: 1rem 0;
+  border-collapse: collapse;
+  font-size: .9rem;
+
+  td, th { padding: .6rem; }
+
+  th {
+    min-width: 5rem;
+    @include from-portrait() { min-width: 10rem; }
+  }
+}
+
+.table--pastel {
+  th {
+    font-weight: normal;
+    text-align: left;
+    color: $green--d;
+    @include from-portrait() { max-width: 5rem; }
+  }
+
+  tr {
+    background-color: $pastel--d;
+    border-bottom: 1px solid $darkpastel;
+  }
+
+  tr:nth-child(even) {
+    background-color: $darkpastel;
+  }
+}

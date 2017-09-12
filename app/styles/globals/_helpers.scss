@@ -1,0 +1,204 @@
+// Grid
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+[class^=col] {
+  flex-basis: 100%;
+}
+
+@for $i from 1 through 12 {
+  @include rwdclass(col-#{$i}) {
+    flex-basis: #{$i * 8.3%};
+  }
+}
+
+// Containers
+@include rwdclass(container) {
+  width: 80%;
+  max-width: 69rem;
+  margin: 0 auto;
+}
+
+.text--small {
+  font-size: .7rem;
+  font-weight: 100;
+}
+
+.underlined {
+    &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(to right, currentColor, rgba(255,255,255,0));
+        opacity: .5;
+        @include from-portrait() {
+            background: linear-gradient(to right, currentColor, rgba(255,255,255,0) 40%);
+        }
+    }
+}
+
+.text--center { text-align: center; }
+// Content manipulation
+@include rwdclass(pull-left) { float: left; }
+@include rwdclass(pull-right) { float: right; }
+
+@include rwdclass(inline) { display: inline; }
+
+.inline-code {
+  display: inline;
+  font-family: 'Ubuntu Mono';
+  background-color: rgba($pastel, .3);
+  color: $orange;
+}
+
+// Misc settings
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+img {
+  max-width: 100%;
+}
+
+video {
+  max-width: 100%;
+}
+
+.img--circle {
+  border-radius: 50%;
+}
+
+.hidden { display: none !important; }
+@include rwdclass(hide) {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Links
+.link--orange {
+  color: $orange;
+  &:hover {
+    color: $orange--d;
+  }
+}
+
+.link--white {
+  color: #fff;
+  &:hover {
+    color: $gray;
+  }
+}
+
+.external {
+  &:after {
+    content: "\e90f";
+    vertical-align: super;
+    font-family: icomoon;
+    font-size: .6rem;
+    margin-left: .1rem;
+  }
+}
+
+// Animations
+$ani-dur: .3s;
+@include rwdclass(fade-in) {
+  animation: fadeIn $ani-dur ease-out;
+}
+
+@include rwdclass(fade-in-left) {
+  animation: fadeInLeft $ani-dur ease-out;
+}
+
+@include rwdclass(fade-in-right) {
+  animation: fadeInRight $ani-dur ease-out;
+}
+
+@include rwdclass(fade-out-left) {
+  animation: fadeOutLeft $ani-dur ease-in;
+}
+
+@include rwdclass(fade-out-right) {
+  animation: fadeOutRight $ani-dur ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0;  }
+  to { opacity: 1;  }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-130%);  }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(130%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOutLeft {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(-130%); }
+}
+
+@keyframes fadeOutRight {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(130%); }
+}
+
+@keyframes tinyPulse {
+  0%,100% { transform: scale(1); }
+  15%,35% { transform: scale(.99); }
+  20%,40% { transform: scale(1); }
+}
+
+@keyframes verticalTransition {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(.8rem);
+  }
+}
+
+@keyframes slowSwing {
+  $rotation: 5deg;
+
+  0%,50%,100% {
+    transform: rotate(0);
+  }
+
+  25% {
+    transform: rotate(-$rotation)
+  }
+
+  75% {
+    transform: rotate($rotation);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
