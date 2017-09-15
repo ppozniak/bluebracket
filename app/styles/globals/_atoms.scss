@@ -109,11 +109,6 @@
   font-size: .9rem;
 
   td, th { padding: .6rem; }
-
-  th {
-    min-width: 5rem;
-    @include from-portrait() { min-width: 10rem; }
-  }
 }
 
 .table--pastel {
@@ -121,7 +116,6 @@
     font-weight: normal;
     text-align: left;
     color: $green--d;
-    @include from-portrait() { max-width: 5rem; }
   }
 
   tr {
