@@ -8,11 +8,37 @@ const runSequence = require('run-sequence');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
+const critical = require('critical').stream;
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 let dev = true;
+
+gulp.task('minifyJS', () => {
+  return gulp.src('dist/scripts/bundle.js')
+            .pipe($.uglify())
+            .pipe(gulp.dest('dist/scripts'));
+});
+
+gulp.task('minifyCSS', () => {
+  return gulp.src('dist/styles/*')
+            .pipe($.cssnano({safe: true, autoprefixer: false}))
+            .pipe(gulp.dest('dist/styles'));
+});
+
+gulp.task('critical', () => {
+  return gulp.src('dist/index.html')
+             .pipe(critical({
+               inline: true,
+               base: 'dist/',
+               src: 'index.html',
+               minify: true,
+               extract: true,
+               inlineImages: true,
+             }))
+             .pipe(gulp.dest('dist'));
+});
 
 gulp.task('handlebars', () => {
   delete require.cache[require.resolve('./app/partials/templateData.js')];
@@ -85,15 +111,11 @@ gulp.task('lint', () => {
   return lint('app/scripts/**/*.js')
     .pipe(gulp.dest('app/scripts'));
 });
-gulp.task('lint:test', () => {
-  return lint('test/spec/**/*.js')
-    .pipe(gulp.dest('test/spec'));
-});
 
 gulp.task('html', ['handlebars', 'styles', 'scripts'], () => {
   return gulp.src('dist/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: true}})))
+    .pipe($.if(/\.js$/, $.uglify()))
     .pipe($.if(/\.css$/, $.cssnano({safe: true, autoprefixer: false})))
     .pipe($.if(/\.html$/, $.htmlmin({
       collapseWhitespace: true,
@@ -180,25 +202,6 @@ gulp.task('serve:dist', ['default'], () => {
   });
 });
 
-gulp.task('serve:test', ['scripts'], () => {
-  browserSync.init({
-    notify: false,
-    port: 9000,
-    ui: false,
-    server: {
-      baseDir: 'test',
-      routes: {
-        '/scripts': '.tmp/scripts',
-        '/bower_components': 'bower_components'
-      }
-    }
-  });
-
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
-  gulp.watch(['test/spec/**/*.js', 'test/index.html']).on('change', reload);
-  gulp.watch('test/spec/**/*.js', ['lint:test']);
-});
-
 // inject bower components
 gulp.task('wiredep', () => {
   gulp.src('app/styles/*.scss')
@@ -215,13 +218,13 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras', 'icons', 'projects'], () => {
+gulp.task('build', ['lint', 'images', 'fonts', 'extras', 'icons', 'projects', 'scripts'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', () => {
   return new Promise(resolve => {
     dev = false;
-    runSequence(['clean', 'wiredep', 'styles'], 'build', resolve);
+    runSequence(['clean', 'wiredep', 'styles'], 'build', 'html', 'critical', ['minifyJS', 'minifyCSS'],  resolve);
   });
 });

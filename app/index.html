@@ -14,17 +14,11 @@
 
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu:400,500" rel="stylesheet">
 
-    <!-- build:css styles/normalize.css -->
-    <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
-    <!-- endbuild -->
-
     <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="/bower_components/modernizr/modernizr.js" async></script>
-    <!-- endbuild -->
     <link rel="icon" href="favicon.png">
   </head>
 
@@ -52,7 +46,10 @@
       <i class="icon icon-arrow-long-up" aria-hidden="true"></i>
       <span class="sr-only">Scroll to the top</span>
     </a>
-    <script src="scripts/bundle.js"></script>
+
+    <!-- build:js scripts/bundle.js defer-->
+      <script src="scripts/bundle.js" defer></script>
+    <!-- endbuild -->
   </body>
 
 </html>

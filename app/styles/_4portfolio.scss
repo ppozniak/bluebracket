@@ -50,8 +50,7 @@ $foreground: $blue;
   }
 }
 
-.project:hover .project__content,
-.touch .project__content {
+.project:hover .project__content {
   transform: translateY(0);
   background-color: rgba($pastel--d,.95);
 }
@@ -63,8 +62,11 @@ $foreground: $blue;
   padding: 1.4rem;
   height: 100%;
   transition: all .4s ease-out;
-  background-color: rgba($pastel--d, .7);
-  transform: translateY( calc(100% - 4.25rem) );
+  background-color: rgba($pastel--d,.95);
+  @include from-desktop() {
+    background-color: rgba($pastel--d, .7);
+    transform: translateY( calc(100% - 4.25rem) );
+  }
 }
 
 .project__header {
