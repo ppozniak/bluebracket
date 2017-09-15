@@ -9,37 +9,58 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const critical = require('critical').stream;
+const merge = require('merge-stream');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
 let dev = true;
 
-gulp.task('minifyJS', () => {
-  return gulp.src('dist/scripts/bundle.js')
-            .pipe($.uglify())
-            .pipe(gulp.dest('dist/scripts'));
+
+/** @name html */
+gulp.task('html', ['handlebars', 'styles', 'scripts'], () => {
+  return gulp.src('dist/*.html')
+    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+    .pipe($.if(/\.js$/, $.uglify()))
+    .pipe($.if(/\.css$/, $.cssnano({safe: true, autoprefixer: false})))
+    .pipe($.if(/\.html$/, $.htmlmin({
+      collapseWhitespace: true,
+      minifyCSS: true,
+      minifyJS: {compress: {drop_console: true}},
+      processConditionalComments: true,
+      removeComments: true,
+      removeEmptyAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true
+    })))
+    .pipe(gulp.dest('dist'));
 });
 
-gulp.task('minifyCSS', () => {
-  return gulp.src('dist/styles/*')
-            .pipe($.cssnano({safe: true, autoprefixer: false}))
-            .pipe(gulp.dest('dist/styles'));
-});
 
+/** @name critical */
 gulp.task('critical', () => {
   return gulp.src('dist/index.html')
-             .pipe(critical({
-               inline: true,
-               base: 'dist/',
-               src: 'index.html',
-               minify: true,
-               extract: true,
-               inlineImages: true,
-             }))
-             .pipe(gulp.dest('dist'));
+   .pipe(critical({
+     inline: true,
+     base: 'dist/',
+     src: 'index.html',
+     minify: true,
+     extract: true,
+     inlineImages: true,
+   }))
+   .pipe(gulp.dest('dist'));
 });
 
+/** @name criticalCss */
+gulp.task('criticalCss', () => {
+  del(['dist/styles/main.css']);
+
+  return gulp.src('dist/styles/main.*.css')
+  .pipe($.cssnano({safe: true, autoprefixer: false}))
+  .pipe(gulp.dest('dist/styles'));
+});
+
+/** @name handlebars */
 gulp.task('handlebars', () => {
   delete require.cache[require.resolve('./app/partials/templateData.js')];
   const templateData = require('./app/partials/templateData.js');
@@ -57,6 +78,8 @@ gulp.task('handlebars', () => {
      .pipe(reload({stream: true}));
 });
 
+
+/** @name styles */
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
     .pipe($.plumber())
@@ -72,6 +95,8 @@ gulp.task('styles', () => {
     .pipe(reload({stream: true}));
 });
 
+
+/** @name scripts */
 gulp.task('scripts', () => {
   const b = browserify({
     entries: 'app/scripts/main.js',
@@ -91,7 +116,7 @@ gulp.task('scripts', () => {
   .pipe($.if(dev, $.sourcemaps.init()))
   .pipe($.babel())
   .pipe($.if(dev, $.sourcemaps.write('.')))
-  .pipe($.if(dev, gulp.dest('.tmp/scripts'), gulp.dest('dist/scripts')))
+  .pipe(gulp.dest('.tmp/scripts'))
   .pipe(reload({stream: true}))
   .pipe($.notify({
     title: 'Done',
@@ -99,6 +124,7 @@ gulp.task('scripts', () => {
   }));
 });
 
+/** @name lint */
 function lint(files) {
   return gulp.src(files)
     .pipe($.eslint({ fix: true }))
@@ -112,46 +138,38 @@ gulp.task('lint', () => {
     .pipe(gulp.dest('app/scripts'));
 });
 
-gulp.task('html', ['handlebars', 'styles', 'scripts'], () => {
-  return gulp.src('dist/*.html')
-    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    .pipe($.if(/\.js$/, $.uglify()))
-    .pipe($.if(/\.css$/, $.cssnano({safe: true, autoprefixer: false})))
-    .pipe($.if(/\.html$/, $.htmlmin({
-      collapseWhitespace: true,
-      minifyCSS: true,
-      minifyJS: {compress: {drop_console: true}},
-      processConditionalComments: true,
-      removeComments: true,
-      removeEmptyAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true
-    })))
-    .pipe(gulp.dest('dist'));
-});
 
+/** @name images */
 gulp.task('images', () => {
   return gulp.src('app/images/**/*')
     .pipe($.cache($.imagemin()))
     .pipe(gulp.dest('dist/images'));
 });
 
+
+/** @name fonts */
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {})
     .concat('app/fonts/**/*'))
     .pipe($.if(dev, gulp.dest('.tmp/fonts'), gulp.dest('dist/fonts')));
 });
 
+
+/** @name icons */
 gulp.task('icons', () => {
   return gulp.src('app/styles/icons/fonts/*')
     .pipe($.if(dev, gulp.dest('.tmp/fonts'), gulp.dest('dist/fonts')));
 });
 
+
+/** @name projects */
 gulp.task('projects', () => {
   return gulp.src('app/projects/*')
     .pipe(gulp.dest('dist/projects'));
 });
 
+
+/** @name extras */
 gulp.task('extras', () => {
   return gulp.src([
     'app/*',
@@ -161,8 +179,12 @@ gulp.task('extras', () => {
   }).pipe(gulp.dest('dist'));
 });
 
+
+/** @name clean */
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
+
+/** @name serve */
 gulp.task('serve', () => {
   runSequence(['clean', 'wiredep'], ['handlebars', 'styles', 'scripts', 'fonts', 'icons'], () => {
     browserSync.init({
@@ -202,6 +224,7 @@ gulp.task('serve:dist', ['default'], () => {
   });
 });
 
+/** @name wiredep */
 // inject bower components
 gulp.task('wiredep', () => {
   gulp.src('app/styles/*.scss')
@@ -218,6 +241,8 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
+
+/** @name build */
 gulp.task('build', ['lint', 'images', 'fonts', 'extras', 'icons', 'projects', 'scripts'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
@@ -225,6 +250,6 @@ gulp.task('build', ['lint', 'images', 'fonts', 'extras', 'icons', 'projects', 's
 gulp.task('default', () => {
   return new Promise(resolve => {
     dev = false;
-    runSequence(['clean', 'wiredep', 'styles'], 'build', 'html', 'critical', ['minifyJS', 'minifyCSS'],  resolve);
+    runSequence(['clean', 'wiredep', 'styles'], 'build', 'html', 'critical', 'criticalCss', resolve);
   });
 });
