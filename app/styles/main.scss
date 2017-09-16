@@ -22,6 +22,7 @@ body {
   margin: 0;
 }
 
+// Font observer
 .landing__wrapper {
   opacity: 0;
   transition: opacity .4s ease-out;
@@ -40,6 +41,32 @@ body {
 
 .fonts-failed {
   .landing__wrapper { opacity: 1; }
+}
+
+// no-js fallback
+.no-js {
+  .landing {
+    min-height: 100vh;
+  }
+
+  .landing__wrapper {
+    opacity: 1;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .project__tag.tag--info {
+    display: none;
+  }
+
+  .footer {
+    position: relative;
+  }
 }
 
 // Basic typography

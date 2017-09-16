@@ -1,27 +1,11 @@
 const TweenLite = require('gsap/TweenLite');
 const scrollTo = require('gsap/scrollToPlugin');
 const debounce = require('lodash/debounce');
-const throttle = require('lodash/throttle');
 const FontFaceObserver = require('fontfaceobserver');
 
-// Helpers
-function hasClass(el, className) {
-  return el.classList.contains(className);
-}
+document.documentElement.classList.remove('no-js');
 
-function addClass(els, className) {
-  const elements = 'forEach' in els ? els : [els];
-  elements.forEach(el => el.classList.add(className));
-}
-
-function removeClass(els, className) {
-  const elements = 'forEach' in els ? els : [els];
-  elements.forEach(el => el.classList.remove(className));
-}
-
-// Global functions
-// Font observer
-(function() {
+(function initFontObservers() {
   const Ubuntu = new FontFaceObserver('Ubuntu');
   const UbuntuBold = new FontFaceObserver('Ubuntu', {
     weight: 500
@@ -40,6 +24,7 @@ function removeClass(els, className) {
   ]).then( () => {document.body.classList.add('fonts-loaded'); } )
     .catch( () => {document.body.classList.add('fonts-failed'); } )
 }());
+
 
  (function globalInitFunctions() {
    const mainNav = document.getElementById('main-nav');
@@ -81,11 +66,13 @@ function removeClass(els, className) {
    }());
 
    function scrollPastNav() {
-     if (window.scrollY >= mainNavOffset && !hasClass(document.body, 'scroll-past-nav')) {
-       addClass(document.body, 'scroll-past-nav');
+     const isPastNav = window.scrollY >= mainNavOffset;
+     const bodyHasClass = document.body.classList.contains('scroll-past-nav');
+     if ( isPastNav && !bodyHasClass ) {
+       document.body.classList.add('scroll-past-nav');
        document.body.style.paddingTop = `${mainNav.offsetHeight}px`;
-     } else if (window.scrollY < mainNavOffset && hasClass(document.body, 'scroll-past-nav')) {
-       removeClass(document.body, 'scroll-past-nav');
+     } else if ( !isPastNav && bodyHasClass ) {
+       document.body.classList.remove('scroll-past-nav');
        document.body.style.paddingTop = 0;
      }
    }
@@ -98,14 +85,11 @@ function removeClass(els, className) {
    window.addEventListener('load', spaceForFooter);
 
    // Scroll handler
-   const scrollHandler = () => {
-     scrollPastNav();
-   };
-   document.addEventListener('scroll', scrollHandler);
+   document.addEventListener('scroll', scrollPastNav);
 
    // Resize handler
    const resizeHandler = debounce(() => {
-     removeClass(document.body, 'scroll-past-nav');
+     document.body.classList.remove('scroll-past-nav');
      document.body.style.paddingTop = 0;
      mainNavOffset = mainNav.offsetTop;
      scrollPastNav();
@@ -114,7 +98,8 @@ function removeClass(els, className) {
    window.addEventListener('resize', resizeHandler);
  }());
 
-(function() {
+
+(function initModal() {
   const modalOverlay = document.querySelector('.modal');
   const modalWrapper = document.querySelector('.modal__wrapper');
   const modalClose = document.querySelector('.modal__close');
@@ -198,5 +183,4 @@ function removeClass(els, className) {
   window.addEventListener('keydown', (e) => {
     if( e.keyCode === 27 ) { modalOff(e); }
   })
-
 }());
