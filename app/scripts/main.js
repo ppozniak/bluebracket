@@ -3,8 +3,6 @@ const scrollTo = require('gsap/scrollToPlugin');
 const debounce = require('lodash/debounce');
 const FontFaceObserver = require('fontfaceobserver');
 
-document.documentElement.classList.remove('no-js');
-
 (function initFontObservers() {
   const Ubuntu = new FontFaceObserver('Ubuntu');
   const UbuntuBold = new FontFaceObserver('Ubuntu', {
