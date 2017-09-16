@@ -11,13 +11,35 @@ html {
   box-sizing: border-box;
 }
 
+$basefonts: "Helvetica", "Arial";
+
 body {
-  font-family: "Ubuntu", Verdana, Tahoma, sans-serif;
+  font-family: $basefonts;
   line-height: $line-height;
   color: $gray--l;
   background-color: $almostblack;
   padding: 0;
   margin: 0;
+}
+
+.landing__wrapper {
+  opacity: 0;
+  transition: opacity .4s ease-out;
+}
+
+.fonts-loaded {
+  font-family: "Ubuntu", $basefonts;
+
+  .landing__wrapper { opacity: 1; }
+
+  pre,
+  code {
+    font-family: "Ubuntu Mono", monospace;
+  }
+}
+
+.fonts-failed {
+  .landing__wrapper { opacity: 1; }
 }
 
 // Basic typography

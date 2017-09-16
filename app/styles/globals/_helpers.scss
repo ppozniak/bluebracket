@@ -49,7 +49,7 @@
 
 .inline-code {
   display: inline;
-  font-family: 'Ubuntu Mono';
+  font-family: 'Ubuntu Mono', monospace;
   background-color: rgba($pastel, .3);
   color: $orange;
 }
@@ -129,14 +129,6 @@ $ani-dur: .3s;
   animation: fadeInRight $ani-dur ease-out;
 }
 
-@include rwdclass(fade-out-left) {
-  animation: fadeOutLeft $ani-dur ease-in;
-}
-
-@include rwdclass(fade-out-right) {
-  animation: fadeOutRight $ani-dur ease-in;
-}
-
 @keyframes fadeIn {
   from { opacity: 0;  }
   to { opacity: 1;  }
@@ -150,32 +142,6 @@ $ani-dur: .3s;
 @keyframes fadeInRight {
   from { opacity: 0; transform: translateX(130%); }
   to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fadeOutLeft {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(-130%); }
-}
-
-@keyframes fadeOutRight {
-  from { opacity: 1; transform: translateX(0); }
-  to { opacity: 0; transform: translateX(130%); }
-}
-
-@keyframes tinyPulse {
-  0%,100% { transform: scale(1); }
-  15%,35% { transform: scale(.99); }
-  20%,40% { transform: scale(1); }
-}
-
-@keyframes verticalTransition {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(.8rem);
-  }
 }
 
 @keyframes slowSwing {
