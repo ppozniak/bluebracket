@@ -30,6 +30,8 @@
     "gulp-sourcemaps": "^2.2.0",
     "gulp-uglify": "^2.0.0",
     "gulp-useref": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "handlebars-helper-i18n": "^0.1.0",
     "main-bower-files": "^2.5.0",
     "merge-stream": "^1.0.1",
     "run-sequence": "^1.2.2",
@@ -52,7 +54,7 @@
   },
   "dependencies": {
     "fontfaceobserver": "^2.0.13",
-    "gsap": "^1.20.2",
+    "gsap": "^1.20.3",
     "lodash": "^4.17.4"
   }
 }

@@ -10,6 +10,7 @@ const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const critical = require('critical').stream;
 const merge = require('merge-stream');
+const langHelper = require('handlebars-helper-i18n');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -68,7 +69,8 @@ gulp.task('handlebars', () => {
     ignorePartials: true,
     batch: ['app/partials'],
     helpers: {
-      capitalize: str => str.charAt(0).toUpperCase() + str.slice(1)
+      capitalize: str => str.charAt(0).toUpperCase() + str.slice(1),
+      i18n: langHelper.i18n
     }
   };
 

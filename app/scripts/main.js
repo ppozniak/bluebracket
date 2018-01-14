@@ -1,5 +1,5 @@
 const TweenLite = require('gsap/TweenLite');
-const scrollTo = require('gsap/scrollToPlugin');
+const scrollTo = require('gsap/ScrollToPlugin');
 const debounce = require('lodash/debounce');
 const FontFaceObserver = require('fontfaceobserver');
 
