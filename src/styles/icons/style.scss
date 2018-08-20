@@ -1,18 +1,18 @@
 @import "variables";
 
 @font-face {
-  font-family: 'icomoon';
+  font-family: '#{$icomoon-font-family}';
   src:
-    url('#{$icomoon-font-path}/icomoon.ttf?2yvxce') format('truetype'),
-    url('#{$icomoon-font-path}/icomoon.woff?2yvxce') format('woff'),
-    url('#{$icomoon-font-path}/icomoon.svg?2yvxce#icomoon') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?onjjj6') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?onjjj6') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?onjjj6##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: '#{$icomoon-font-family}' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -25,189 +25,207 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-external {
+.icon-unity {
   &:before {
-    content: $icon-external;
+    content: $icon-unity; 
   }
 }
-.icon-person {
+.icon-webpack {
   &:before {
-    content: $icon-person;
-  }
-}
-.icon-stats-bars2 {
-  &:before {
-    content: $icon-stats-bars2;
-  }
-}
-.icon-pacman {
-  &:before {
-    content: $icon-pacman;
-  }
-}
-.icon-image {
-  &:before {
-    content: $icon-image;
-  }
-}
-.icon-link {
-  &:before {
-    content: $icon-link;
-  }
-}
-.icon-close {
-  &:before {
-    content: $icon-close;
-  }
-}
-.icon-dots {
-  &:before {
-    content: $icon-dots;
-  }
-}
-.icon-info {
-  &:before {
-    content: $icon-info;
-  }
-}
-.icon-arrow-long-up {
-  &:before {
-    content: $icon-arrow-long-up;
+    content: $icon-webpack;     
+    color: #8dd6f9;
   }
 }
 .icon-vue {
   &:before {
-    content: $icon-vue;
+    content: $icon-vue; 
   }
 }
 .icon-js {
   &:before {
-    content: $icon-js;
+    content: $icon-js; 
   }
 }
 .icon-ts {
   &:before {
-    content: $icon-ts;
+    content: $icon-ts; 
   }
 }
 .icon-phaser {
   &:before {
-    content: $icon-phaser;
+    content: $icon-phaser; 
   }
 }
 .icon-redux {
   &:before {
-    content: $icon-redux;
+    content: $icon-redux;     
+    color: #764abc;
   }
 }
 .icon-ps {
   &:before {
-    content: $icon-ps;
+    content: $icon-ps; 
   }
 }
 .icon-sass {
   &:before {
-    content: $icon-sass;
+    content: $icon-sass; 
   }
 }
 .icon-angular {
   &:before {
-    content: $icon-angular;
+    content: $icon-angular; 
   }
 }
 .icon-node {
   &:before {
-    content: $icon-node;
+    content: $icon-node; 
   }
 }
 .icon-gulp {
   &:before {
-    content: $icon-gulp;
+    content: $icon-gulp; 
   }
 }
 .icon-react {
   &:before {
-    content: $icon-react;
+    content: $icon-react;     
+    color: #00d8ff;
+  }
+}
+.icon-testing {
+  &:before {
+    content: $icon-testing; 
   }
 }
 .icon-envelope {
   &:before {
-    content: $icon-envelope;
+    content: $icon-envelope; 
   }
 }
 .icon-rwd {
   &:before {
-    content: $icon-rwd;
+    content: $icon-rwd; 
   }
 }
 .icon-arrow-down2 {
   &:before {
-    content: $icon-arrow-down2;
+    content: $icon-arrow-down2; 
   }
 }
 .icon-work {
   &:before {
-    content: $icon-work;
+    content: $icon-work; 
+  }
+}
+.icon-dots {
+  &:before {
+    content: $icon-dots; 
+  }
+}
+.icon-info {
+  &:before {
+    content: $icon-info; 
+  }
+}
+.icon-arrow-long-up {
+  &:before {
+    content: $icon-arrow-long-up; 
+  }
+}
+.icon-external {
+  &:before {
+    content: $icon-external; 
+  }
+}
+.icon-person {
+  &:before {
+    content: $icon-person; 
+  }
+}
+.icon-stats-bars2 {
+  &:before {
+    content: $icon-stats-bars2; 
+  }
+}
+.icon-pacman {
+  &:before {
+    content: $icon-pacman; 
+  }
+}
+.icon-image {
+  &:before {
+    content: $icon-image; 
+  }
+}
+.icon-link {
+  &:before {
+    content: $icon-link; 
+  }
+}
+.icon-close {
+  &:before {
+    content: $icon-close; 
   }
 }
 .icon-facebook {
   &:before {
-    content: $icon-facebook;
+    content: $icon-facebook; 
   }
 }
 .icon-github {
   &:before {
-    content: $icon-github;
+    content: $icon-github; 
   }
 }
 .icon-web {
   &:before {
-    content: $icon-web;
+    content: $icon-web; 
   }
 }
 .icon-linkedin {
   &:before {
-    content: $icon-linkedin;
+    content: $icon-linkedin; 
   }
 }
 .icon-html5 {
   &:before {
-    content: $icon-html5;
+    content: $icon-html5; 
   }
 }
 .icon-css3 {
   &:before {
-    content: $icon-css3;
+    content: $icon-css3; 
   }
 }
 .icon-wordpress {
   &:before {
-    content: $icon-wordpress;
+    content: $icon-wordpress; 
   }
 }
 .icon-drupal {
   &:before {
-    content: $icon-drupal;
+    content: $icon-drupal; 
   }
 }
 .icon-codepen {
   &:before {
-    content: $icon-codepen;
+    content: $icon-codepen; 
   }
 }
 .icon-git {
   &:before {
-    content: $icon-git;
+    content: $icon-git; 
   }
 }
 .icon-lastfm {
   &:before {
-    content: $icon-lastfm;
+    content: $icon-lastfm; 
   }
 }
 .icon-wheelchair-alt {
   &:before {
-    content: $icon-wheelchair-alt;
+    content: $icon-wheelchair-alt; 
   }
 }
 

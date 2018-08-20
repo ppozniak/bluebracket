@@ -74,7 +74,7 @@ gulp.task('handlebars', () => {
 
   return gulp.src('src/*.html')
      .pipe($.compileHandlebars(templateData, options))
-     .pipe($.if(dev, gulp.dest('dist'), gulp.dest('dist')))
+     .pipe(gulp.dest('dist'))
      .pipe(reload({stream: true}));
 });
 
@@ -182,7 +182,7 @@ gulp.task('serve', () => {
       'src/images/**/*',
     ]).on('change', reload);
 
-    gulp.watch(['src/partials/*', 'src/*.html'], ['handlebars', 'html']);
+    gulp.watch(['src/partials/*', 'src/*.html'], ['html']);
     gulp.watch('src/styles/**/*.scss', ['styles']);
     gulp.watch('src/scripts/**/*.js', ['scripts']);
     gulp.watch('src/styles/icons/*', ['icons']);

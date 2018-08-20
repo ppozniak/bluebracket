@@ -38,76 +38,70 @@ exports.skillGroups = [
     Skill('RWD', 'icon-rwd', 'Responsive Web Design'),
     Skill('SASS', 'icon-sass', 'Syntactically Awesome Style Sheets'),
     Skill('JS&nbsp;<span class=\"text--small\">(ES6)</span>', 'icon-js', 'JavaScript (ECMAScript 2015/6)'),
+    Skill('Redux', 'icon-redux'),
+    Skill('React.js&nbsp;<span class=\"text--small\">(+Native)</span>', 'icon-react'),
   ]),
   SkillGroup('Good', [
-    Skill('React.js', 'icon-react'),
-    Skill('Vue.js', 'icon-vue'),
-    Skill('Phaser', 'icon-phaser'),
+    Skill('Testing', 'icon-testing'),
     Skill('Git', 'icon-git'),
     Skill('Gulp', 'icon-gulp'),
     Skill('Photoshop', 'icon-ps'),
   ]),
   SkillGroup('Beginner', [
+    Skill('Unity', 'icon-unity'),
     Skill('Wordpress', 'icon-wordpress'),
     Skill('Drupal', 'icon-drupal'),
-    Skill('Redux', 'icon-redux'),
     Skill('Node.js', 'icon-node'),
+    Skill('Phaser', 'icon-phaser'),
+    Skill('Vue.js', 'icon-vue'),
+    Skill('Typescript', 'icon-ts'),
   ]),
   SkillGroup('In future', [
     Skill('Angular2', 'icon-angular'),
-    Skill('Typescript', 'icon-ts'),
   ]),
 ];
 
 const thumbLink = (name) => `../images/screenshots/${name}_thumb.jpg`
 exports.projects = [
   Project({
-    id: "leveraged",
-    name: "Leveraged",
-    desc: "My first serious project in the career. Simple big website, which taught me a lot in a hurtful way.",
-    tags: [tags.web],
-    links: [links.live('https://www.leveraged.com.au'), links.info('#', false, 'leveraged')],
-    img: thumbLink('leveraged')
+    id: 'lifecounter',
+    name: 'Life counters',
+    desc: 'Count down everything in your life! Small project in Vue.js which I had to learn, to help my friend get into patronage project.',
+    tags: [tags.js, tags.vue],
+    links: [links.gh('https://github.com/ppozniak/life-counters'), links.info('#', false, 'life-counters')],
+    img: thumbLink('life-counters')
   }),
   Project({
-    id: "tio",
-    name: "TIO Report",
-    desc: "Simple one-page website, with book-like behavior on mobile devices.",
-    tags: [tags.web, tags.js],
-    links: [links.live('http://annualreport2016.tio.com.au/'), links.info('#', false, 'tio')],
-    img: thumbLink('tio')
-  }),
-  Project({
-    id: "regionmap",
-    name: "Region Explorer",
-    desc: "Interactive map of Australian regions, postcode search, and filterable list of cities. <em>Page will be available externally in the future</em>",
+    id: 'regionmap',
+    name: 'Region Explorer',
+    desc: 'Interactive map of Australian regions, postcode search, and filterable list of cities. <em>Page will be available externally in the future</em>',
     tags: [tags.js],
     links: [links.info('#', false, 'rdv')],
     img: thumbLink('rdv')
   }),
   Project({
-    id: "sheep",
-    name: "Woolmagedon",
-    desc: "Mobile endless runner game developed with Phaser. My first game in JavaScript took seriously. <em>In development.</em>",
-    tags: [tags.js, tags.game],
-    links: [links.info('#', false, 'woolmagedon')],
-    img: thumbLink('woolmagedon')
+    id: 'tio',
+    name: 'TIO Report',
+    desc: 'Simple one-page website, with book-like behavior on mobile devices.',
+    tags: [tags.web, tags.js],
+    links: [links.live('http://annualreport2016.tio.com.au/'), links.info('#', false, 'tio')],
+    img: thumbLink('tio')
   }),
   Project({
-    id: "ppchat",
-    name: "Pp Chat",
-    desc: "Web chat created as a job interview task. React, Sockets and Node - fun.",
+    id: 'ppchat',
+    name: 'Pp Chat',
+    desc: 'Web chat created as a job interview task. React, Sockets and Node - fun.',
     tags: [tags.js, tags.react],
     links: [links.gh('https://github.com/ppozniak/ppchat'), links.info('#', false, 'ppchat')],
     img: thumbLink('ppchat')
   }),
   Project({
-    id: "lifecounter",
-    name: "Life counters",
-    desc: "Count down everything in your life! Small project in Vue.js which I had to learn, to help my friend get into patronage project.",
-    tags: [tags.js, tags.vue],
-    links: [links.gh('https://github.com/ppozniak/life-counters'), links.info('#', false, 'life-counters')],
-    img: thumbLink('life-counters')
+    id: 'leveraged',
+    name: 'Leveraged',
+    desc: 'My first serious project in the career. Simple big website, which taught me a lot in a hurtful way.',
+    tags: [tags.web],
+    links: [links.live('https://www.leveraged.com.au'), links.info('#', false, 'leveraged')],
+    img: thumbLink('leveraged')
   }),
 ];
 
