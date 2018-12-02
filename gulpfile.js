@@ -35,30 +35,6 @@ gulp.task('html', ['handlebars', 'styles', 'scripts'], () => {
     .pipe(gulp.dest('dist'));
 });
 
-
-/** @name critical */
-gulp.task('critical', () => {
-  return gulp.src('dist/index.html')
-   .pipe(critical({
-     inline: true,
-     base: 'dist/',
-     src: 'index.html',
-     minify: true,
-     extract: true,
-     inlineImages: true,
-   }))
-   .pipe(gulp.dest('dist'));
-});
-
-/** @name criticalCss */
-gulp.task('criticalCss', () => {
-  del(['dist/styles/main.css']);
-
-  return gulp.src('dist/styles/main.*.css')
-  .pipe($.cssnano({safe: true, autoprefixer: false}))
-  .pipe(gulp.dest('dist/styles'));
-});
-
 /** @name handlebars */
 gulp.task('handlebars', () => {
   delete require.cache[require.resolve('./src/partials/templateData.js')];
@@ -208,6 +184,6 @@ gulp.task('build', ['lint', 'images', 'extras', 'icons', 'projects', 'scripts'],
 gulp.task('default', () => {
   return new Promise(resolve => {
     dev = false;
-    runSequence(['clean', 'styles'], 'build', 'html', 'critical', 'criticalCss', resolve);
+    runSequence(['clean', 'styles'], 'build', 'html', resolve);
   });
 });
