@@ -37,17 +37,18 @@ exports.skillGroups = [
     Skill('CSS', 'icon-css3', 'Cascading Style Sheets'),
     Skill('RWD', 'icon-rwd', 'Responsive Web Design'),
     Skill('SASS', 'icon-sass', 'Syntactically Awesome Style Sheets'),
-    Skill('JS&nbsp;<span class=\"text--small\">(ES6)</span>', 'icon-js', 'JavaScript (ECMAScript 2015/6)'),
+    Skill('JS&nbsp;<span class=\"text--small\">(ES6+)</span>', 'icon-js', 'JavaScript (ECMAScript 2015/6)'),
     Skill('Redux', 'icon-redux'),
     Skill('React.js&nbsp;<span class=\"text--small\">(+Native)</span>', 'icon-react'),
   ]),
   SkillGroup('Good', [
-    Skill('Testing', 'icon-testing'),
     Skill('Git', 'icon-git'),
     Skill('Gulp', 'icon-gulp'),
     Skill('Photoshop', 'icon-ps'),
+    Skill('Browser extensions', 'icon-extension'),
   ]),
   SkillGroup('Beginner', [
+    Skill('Testing', 'icon-testing'),
     Skill('Unity', 'icon-unity'),
     Skill('Wordpress', 'icon-wordpress'),
     Skill('Drupal', 'icon-drupal'),
@@ -56,8 +57,8 @@ exports.skillGroups = [
     Skill('Vue.js', 'icon-vue'),
     Skill('Typescript', 'icon-ts'),
   ]),
-  SkillGroup('In future', [
-    Skill('Angular2', 'icon-angular'),
+  SkillGroup('Learning', [
+    Skill('GraphQL', 'icon-graphql'),
   ]),
 ];
 
@@ -74,9 +75,9 @@ exports.projects = [
   Project({
     id: 'regionmap',
     name: 'Region Explorer',
-    desc: 'Interactive map of Australian regions, postcode search, and filterable list of cities. <em>Page will be available externally in the future</em>',
+    desc: 'Interactive map of Australian regions with post-code search and filterable list of cities.',
     tags: [tags.js],
-    links: [links.info('#', false, 'rdv')],
+    links: [links.live('https://www.rdv.vic.gov.au/victorias-regions'), links.info('#', false, 'rdv')],
     img: thumbLink('rdv')
   }),
   Project({
@@ -102,6 +103,14 @@ exports.projects = [
     tags: [tags.web],
     links: [links.live('https://www.leveraged.com.au'), links.info('#', false, 'leveraged')],
     img: thumbLink('leveraged')
+  }),
+  Project({
+    id: 'ypm',
+    name: 'Yoti Password Manager',
+    desc: 'Browser extension for managing your passwords.',
+    tags: [tags.web, tags.js, tags.react],
+    links: [links.live('https://www.yoti.com/passwords'), links.info('#', false, 'ypm')],
+    img: thumbLink('ypm')
   }),
 ];
 

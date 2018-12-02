@@ -54,6 +54,13 @@
   color: $orange;
 }
 
+.inline-code--interactive {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 // Misc settings
 .sr-only {
   border: 0;
@@ -145,7 +152,7 @@ $ani-dur: .3s;
 }
 
 @keyframes slowSwing {
-  $rotation: 5deg;
+  $rotation: 3deg;
 
   0%,50%,100% {
     transform: rotate(0);

@@ -1,41 +1,42 @@
 <section class="portfolio section" id="portfolio">
   <div class="container">
     <header class="section__header">
-      <h2 class="section__heading">Things I've done</h2>
+      <h2 class="section__heading">Things I've worked on</h2>
     </header>
     <!-- Img grid -->
     <div class="projects">
       <ul id="projects__list" class="projects__list">
         {{#each projects}}
-          <li class="project" style="background-image: url('{{img}}');">
-            <div class="project__content">
-              <div class="project__header">
-                <h3 id="{{id}}__title" class="project__title">{{name}}</h3>
-                <ul class="project__tags">
-                  {{#each tags}}
-                    <li class="project__tag tag--{{className}}" data-tooltip="{{name}}">
-                      {{#if icon}}<i class="icon {{icon}}"></i>{{~/if}}
-                        <span class="sr-only">{{name}}</span>
-                        <span aria-hidden="true">{{text}}</span>
-                    </li>
-                    {{~/each}}
-                </ul>
-              </div>
-              <p class="project__desc" id="{{id}}__desc">{{{desc}}}</p>
-              <ul class="project__links">
-                {{#each links}}
-                  <li class="project__link-item">
-                    <a class="project__link project__tag tag--{{className}}" href="{{href}}" {{#if external}} target="_blank" rel="noopener" {{~/if}} data-tooltip="{{name}}" {{#if project}} data-project="{{project}}" {{~/if}}>
-                        {{#if icon}}<i class="icon {{icon}}"></i>{{~/if}}
-                          <span class="sr-only">{{name}}</span>
-                          <span aria-hidden="true">{{text}}</span>
-                      </a>
-                  </li>
-                  {{~/each}}
+        <li class="project" style="background-image: url('{{img}}');">
+          <div class="project__content">
+            <div class="project__header">
+              <h3 id="{{id}}__title" class="project__title">{{name}}</h3>
+              <ul class="project__tags">
+                {{#each tags}}
+                <li class="project__tag tag--{{className}}" data-tooltip="{{name}}">
+                  {{#if icon}}<i class="icon {{icon}}"></i>{{~/if}}
+                  <span class="sr-only">{{name}}</span>
+                  <span aria-hidden="true">{{text}}</span>
+                </li>
+                {{~/each}}
               </ul>
             </div>
-          </li>
-          {{~/each}}
+            <p class="project__desc" id="{{id}}__desc">{{{desc}}}</p>
+            <ul class="project__links">
+              {{#each links}}
+              <li class="project__link-item">
+                <a class="project__link project__tag tag--{{className}}" href="{{href}}" {{#if external}} target="_blank"
+                  rel="noopener" {{~/if}} data-tooltip="{{name}}" {{#if project}} data-project="{{project}}" {{~/if}}>
+                  {{#if icon}}<i class="icon {{icon}}"></i>{{~/if}}
+                  <span class="sr-only">{{name}}</span>
+                  <span aria-hidden="true">{{text}}</span>
+                </a>
+              </li>
+              {{~/each}}
+            </ul>
+          </div>
+        </li>
+        {{~/each}}
     </div>
   </div>
 </section>

@@ -14,15 +14,19 @@
             <legend class="sr-only">Form contents</legend>
             <div class="form__field">
               <label class="form__label" for="email">Email</label>
-              <input class="form__input" required placeholder="awesome@company.com" type="email" name="_replyto" id="email" /> </div>
+              <input class="form__input" required placeholder="awesome@company.com" type="email" autocomplete="email"
+                name="_replyto" id="email" /> </div>
             <div class="form__field">
               <label class="form__label" for="subject">Subject</label>
-              <input class="form__input" required placeholder="Job offer" type="text" name="_subject" id="subject" /> </div>
+              <input class="form__input" required placeholder="Job offer - Senior Frontend Ninja Tank Mage (mooTools + wordpress)" type="text" name="_subject" id="subject" />
+            </div>
             <div class="form__field">
               <label class="form__label" for="message">Message</label>
-              <textarea id="message" class="form__input form__textarea" required placeholder="Hey man, we need you in our team please join us we have free ping-pong table and stuff and we give money for work so yeah please" name="message"></textarea>
+              <textarea id="message" class="form__input form__textarea" required placeholder="Hey man, we need you in our team please join us we have free ping-pong table and stuff and we give money for work so yeah, please. P.S you're quite handsome."
+                name="message"></textarea>
             </div>
-            <input class="btn pull-right" type="submit" value="Submit" /> </fieldset>
+            <input class="btn pull-right" type="submit" value="Submit" />
+          </fieldset>
         </form>
       </div>
       <!-- Social links -->
@@ -30,14 +34,14 @@
         <h2>Social links</h2>
         <ul class="socials__list">
           {{#each socialLinks}}
-            <li class="socials__item">
-              <a class="socials__link link--{{className}}" href="{{link}}" target="_blank" rel="noopener">
-                <i aria-hidden="true" class="socials__icon icon {{icon}}"></i>
-                <span class="socials__title">
-                  <span class="sr-only">Go to my</span>{{name}}<span class="sr-only"> profile</span></span>
-              </a>
-            </li>
-            {{~/each}}
+          <li class="socials__item">
+            <a class="socials__link link--{{className}}" href="{{link}}" target="_blank" rel="noopener">
+              <i aria-hidden="true" class="socials__icon icon {{icon}}"></i>
+              <span class="socials__title">
+                <span class="sr-only">Go to my</span>{{name}}<span class="sr-only"> profile</span></span>
+            </a>
+          </li>
+          {{~/each}}
         </ul>
       </div>
     </div>

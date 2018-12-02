@@ -16,6 +16,7 @@
   @include from-landscape() {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 }
 
@@ -29,7 +30,8 @@
   justify-content: center;
   flex: 1 5 auto;
   @include from-landscape() {
-    margin-right: 3rem;
+    margin-right: 5rem;
+    flex: 0;
   }
 }
 
@@ -39,7 +41,7 @@
   margin-top: 1rem;
   margin-bottom: .3rem;
   max-width: 20rem;
-  animation: 3s slowSwing 1.5s infinite linear;
+  animation: 5s slowSwing 1.5s infinite linear;
   transition: all 1.5s ease-in-out;
 
   // Avatar's border
@@ -88,11 +90,12 @@
   }
 }
 
-// Frontent
+// Front-end developer
 .landing__sub {
   white-space: nowrap;
   margin-top: .5rem;
   font-size: 1.3rem;
+  font-weight: 100;
   @include from-portrait() {
     margin-top: 1rem;
     font-size: 1.7rem;
@@ -103,8 +106,26 @@
   padding: 1.5rem 0;
   margin-top: 1.5rem;
   border-top: 1px solid $blue;
+  font-size: 1rem;
+  font-weight: 100;
+  @include from-landscape() {
+    border: none;
+  }
+}
+
+.about__header {
+  font-size: 1.45rem;
+  font-weight: 300;
+  @include from-landscape {
+    margin-bottom: .4rem;
+    border-bottom: 2px solid $blue;
+    padding-bottom: .4rem;
+  }
 }
 
 .about__text {
   max-width: 42rem;
+  @include from-landscape() {
+    max-width: 400px;
+  }
 }

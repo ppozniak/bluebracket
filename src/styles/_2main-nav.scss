@@ -1,12 +1,11 @@
-$detail: $darkgreen;
-$active: $darkgreen;
-$background: $green--d;
-$font: #fff;
-$font-active: $gray--l;
+$detail: rgba(#000, .25);
+$active: $darkpastel;
+$background: $gray;
+$font: $darkpastel;
+$font-active: $darkpastel;
 
 .main-nav {
   z-index: 10;
-  transition: box-shadow .4s ease-in-out;
 }
 
 .scroll-past-nav .main-nav {
@@ -14,7 +13,6 @@ $font-active: $gray--l;
   top: 0;
   left: 0;
   right: 0;
-  box-shadow: 0 1px 10px 1px $softshadow;
   .nav__a {
     background-color: rgba($background, .85);
   }
@@ -33,13 +31,12 @@ $font-active: $gray--l;
     z-index: 1;
     content: "";
     position: absolute;
-    bottom: 15%;
+    bottom: 7.5%;
     right: -1px;
     display: block;
-    height: 70%;
-    width: 2px;
+    height: 85%;
+    width: 1px;
     background-color: $detail;
-    opacity: .4;
   }
 }
 
@@ -50,10 +47,11 @@ $font-active: $gray--l;
   display: block;
   height: 100%;
   width: 100%;
-  font-size: .7em;
+  font-size: .75em;
   padding: .45rem 0;
   transition: all .4s ease-in-out;
   background-color: $background;
+  box-shadow: 1px 1px 3px rgba(#000, .2);
 
   // Bottom border
   &:after {
@@ -64,7 +62,7 @@ $font-active: $gray--l;
     display: block;
     width: 0;
     background-color: $detail;
-    height: 3px;
+    height: 2px;
     transition: width .3s ease-in-out;
   }
   &:hover, &.is-active, &:focus {
